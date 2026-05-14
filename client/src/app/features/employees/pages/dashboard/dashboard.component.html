@@ -1,0 +1,50 @@
+<div class="dashboard-container">
+
+  <div class="dashboard-header">
+
+    <div>
+      <h1>Analytics Dashboard</h1>
+      <p>Department insights and analytics</p>
+    </div>
+
+    <button routerLink="/employees">
+      Back
+    </button>
+
+  </div>
+
+  <div class="cards">
+
+    <div
+      class="card"
+      *ngFor="let item of analytics"
+    >
+
+      <h2>{{ item._id }}</h2>
+
+      <p>
+        Total Employees:
+        {{ item.totalEmployees }}
+      </p>
+
+      <p>
+        Avg Salary:
+        ₹ {{ item.averageSalary | number:'1.0-0' }}
+      </p>
+
+      <p>
+        Avg Experience:
+        {{ item.averageExperience | number:'1.0-1' }}
+        Years
+      </p>
+
+      <p>
+        Highest Salary:
+        ₹ {{ item.highestSalary }}
+      </p>
+
+    </div>
+
+  </div>
+
+</div>

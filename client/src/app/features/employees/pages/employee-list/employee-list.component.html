@@ -1,0 +1,157 @@
+<div class="employee-container">
+<button
+  class="add-btn"
+  routerLink="/dashboard"
+>
+  Analytics Dashboard
+</button>
+    <div class="top-bar">
+
+        <div>
+            <h1>Employee Management</h1>
+            <p>Manage and monitor employees</p>
+        </div>
+
+        <button class="add-btn" routerLink="/add-employee">
+            + Add Employee
+        </button>
+
+    </div>
+<button
+  class="logout-btn"
+  (click)="logout()"
+>
+  Logout
+</button>
+    <div class="filter-section">
+        <select [(ngModel)]="selectedDepartment">
+
+            <option value="">
+                Select Department
+            </option>
+
+            <option *ngFor="let department of departments" [value]="department">
+                {{ department }}
+            </option>
+
+        </select>
+
+        <select [(ngModel)]="selectedCity">
+
+            <option value="">
+                Select City
+            </option>
+
+            <option *ngFor="let city of cities" [value]="city">
+                {{ city }}
+            </option>
+
+        </select>
+
+        <button (click)="getEmployees()">
+            Filter
+        </button>
+
+        <hr>
+        <input type="text" placeholder="Search employee..." [(ngModel)]="searchText" />
+
+        <button (click)="getEmployees()">
+            Search
+        </button>
+
+        <select [(ngModel)]="selectedSort">
+
+            <option value="">
+                Sort By
+            </option>
+
+            <option value="salary">
+                Salary Low To High
+            </option>
+
+            <option value="-salary">
+                Salary High To Low
+            </option>
+
+            <option value="experience">
+                Experience Low To High
+            </option>
+
+            <option value="-experience">
+                Experience High To Low
+            </option>
+
+        </select>
+
+        <button (click)="getEmployees()">
+            Apply
+        </button>
+
+    </div>
+
+    <div class="table-wrapper">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Department</th>
+                    <th>Designation</th>
+                    <th>Salary</th>
+                    <th>Experience</th>
+                    <th>City</th>
+                    <th>Actions</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr *ngFor="let employee of employees">
+
+                    <td>{{ employee.name }}</td>
+                    <td>{{ employee.email }}</td>
+                    <td>{{ employee.department }}</td>
+                    <td>{{ employee.designation }}</td>
+                    <td>₹ {{ employee.salary }}</td>
+                    <td>{{ employee.experience }} Years</td>
+                    <td>{{ employee.city }}</td>
+
+                    <td class="action-buttons">
+
+                        <button class="edit-btn" [routerLink]="['/edit-employee', employee._id]">
+                            Edit
+                        </button>
+
+                        <button class="delete-btn" (click)="deleteEmployee(employee._id)">
+                            Delete
+                        </button>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+        <div class="pagination">
+
+            <button (click)="previousPage()">
+                Previous
+            </button>
+
+            <span>
+                Page {{ currentPage }}
+            </span>
+
+            <button (click)="nextPage()">
+                Next
+            </button>
+
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,37 @@
+<div class="auth-container">
+
+  <form
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()"
+    class="auth-form"
+  >
+
+    <h1>Login</h1>
+
+    <input
+      type="email"
+      placeholder="Enter Email"
+      formControlName="email"
+    />
+
+    <input
+      type="password"
+      placeholder="Enter Password"
+      formControlName="password"
+    />
+
+    <button type="submit">
+      Login
+    </button>
+<p class="auth-link">
+
+  New User?
+
+  <a routerLink="/register">
+    Register Here
+  </a>
+
+</p>
+  </form>
+
+</div>
