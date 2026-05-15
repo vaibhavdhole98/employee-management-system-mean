@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import {
+  environment
+} from '../../../environments/environment';
 import { Employee } from '../../shared/interfaces/employee';
 
 @Injectable({
@@ -9,8 +11,8 @@ import { Employee } from '../../shared/interfaces/employee';
 })
 export class EmployeeService {
 
-  private apiUrl = 'http://localhost:5000/api/v1/employees';
-
+  // private apiUrl = 'http://localhost:5000/api/v1/employees';
+  private apiUrl = `${environment.apiUrl}/auth`;
   constructor(private http: HttpClient) { }
 
   getEmployees(): Observable<any> {
